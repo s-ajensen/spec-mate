@@ -24,4 +24,10 @@
     <extensions defaultExtensionNs="com.intellij">
 
     </extensions>
+    <actions>
+        <action id="io.sajensen.specmate.GoToTestAction" class="io.sajensen.specmate.GoToTestAction" text="Test"
+                description="Opens the corresponding speclj test file for file">
+            <add-to-group group-id="EditorPopupMenu.GoTo" anchor="last"/>
+        </action>
+    </actions>
 </idea-plugin>
