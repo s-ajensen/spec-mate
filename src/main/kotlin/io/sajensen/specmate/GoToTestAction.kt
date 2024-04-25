@@ -5,6 +5,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.ui.Messages
 import com.intellij.openapi.vfs.LocalFileSystem
+import com.intellij.openapi.vfs.VirtualFile
 
 class GoToTestAction : AnAction("Test") {
 
@@ -13,7 +14,7 @@ class GoToTestAction : AnAction("Test") {
         val currentFile = e.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
 
         if (project != null && currentFile != null) {
-            val testFilePath = currentFile.path.replaceFirst("src", "spec").replace(".clj", "_spec.clj")
+            val testFilePath = getSpecPath(currentFile)
             val testFile = LocalFileSystem.getInstance().findFileByPath(testFilePath)
 
             if (testFile != null) {
@@ -27,5 +28,21 @@ class GoToTestAction : AnAction("Test") {
                 )
             }
         }
+    }
+
+    private fun getSpecPath(file: VirtualFile): String {
+        val basePath = file.path.replaceFirst("src", "spec").substringBeforeLast(".")
+        val extension = file.extension
+        return basePath.plus("_spec.").plus(extension)
+    }
+
+    override fun update(e: AnActionEvent) {
+        super.update(e)
+
+        val project = e.project
+        val file = e.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
+        val isClojureFile = file?.extension in listOf("clj", "cljc", "cljs")
+
+        e.presentation.isEnabledAndVisible = project != null && isClojureFile
     }
 }
