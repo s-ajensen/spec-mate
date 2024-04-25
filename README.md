@@ -13,3 +13,7 @@ Super simple Intellij Idea plugin to "Go To Spec" for clojure speclj tests.
 ### Usage
 
 While looking at a `.clj`, `.cljc`, or `.cljs` file in Intellij, right click and select `Go To... > Spec` and you will be navigated to the speclj test if it exists.
+
+To set as a hotkey:
+1. Navigate to `Intellij Idea > Settings > Keymap > Plugins > spec-mate > Spec`
+2. Set your desired hotkey
