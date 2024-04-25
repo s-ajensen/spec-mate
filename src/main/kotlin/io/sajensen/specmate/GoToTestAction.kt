@@ -7,7 +7,7 @@ import com.intellij.openapi.ui.Messages
 import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.openapi.vfs.VirtualFile
 
-class GoToTestAction : AnAction("Test") {
+class GoToTestAction : AnAction("Spec") {
 
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project

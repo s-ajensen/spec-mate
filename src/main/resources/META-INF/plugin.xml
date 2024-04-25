@@ -25,7 +25,7 @@
 
     </extensions>
     <actions>
-        <action id="io.sajensen.specmate.GoToTestAction" class="io.sajensen.specmate.GoToTestAction" text="Test"
+        <action id="io.sajensen.specmate.GoToTestAction" class="io.sajensen.specmate.GoToTestAction" text="Spec"
                 description="Opens the corresponding speclj test file for file">
             <add-to-group group-id="EditorPopupMenu.GoTo" anchor="last"/>
         </action>
